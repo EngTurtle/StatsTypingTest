@@ -1,15 +1,9 @@
 # Create your views here.
+from forms import Testform
 from models import TestResult
-from django.views.generic.edit import FormView
+from django.views.generic.edit import CreateView
 
-class ContactView(FormView):
-    template_name = 'home.html'
-    form_class = TestResult
-    success_url = '/thanks/'
-
-    def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        form.send_email()
-        return super(ContactView, self).form_valid(form)
+class ContactView(CreateView):
+    template_name = 'type_test.html'
+    model = TestResult
 

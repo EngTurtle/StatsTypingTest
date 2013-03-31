@@ -1,0 +1,32 @@
+{% extends "home.html" %}
+{% block content %}
+<div class="row">
+{#Title#}
+    <div class="span4 offset2">
+        <h1>Typing Test</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="span8">
+        <p>The term "design of experiments" derives from early statistical work performed by Sir Ronald Fisher. He
+            was described as "a genius who almost single-handedly created the foundations for modern statistical
+            science." Fisher initiated the principles of design of experiments and elaborated on his studies of
+            "analysis of variance". Perhaps even more important, Fisher began his systematic approach to the
+            analysis of real data as the springboard for the development of new statistical methods. He began to pay
+            particular attention to the labour involved in the necessary computations performed by hand, and
+            developed methods that were as practical as they were founded in rigour. In 1925, this work culminated
+            in the publication of his first book, Statistical Methods for Research Workers.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="span8">
+        <textarea rows="10" autofocus="true" id="input-field"></textarea>
+    </div>
+</div>
+<div class="hidden">
+    <form action="\" id="test_result">
+        {{ form.as_ul }}
+    </form>
+</div>
+<script type="text/javascript" src="{{ STATIC_URL }}js/typing_test.js"></script>
+{% endblock %}
