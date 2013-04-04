@@ -27,7 +27,7 @@ function check_completion(id) {
 }
 
 function submitFrm() {
-    $('#id_total_time').val(((Date.now() - time) / 1000));
+    $('#id_total_time').val(time);
     $('#id_errors').val(err);
     $('#id_device_string').val(navigator.userAgent);
     $('#test_result').submit();
@@ -54,7 +54,6 @@ $(document).ready(function () {
 
         if (keypress_update(text_box_id)) {
             alert('complete');
-            submitFrm();
         }
     });
 });
