@@ -12,17 +12,32 @@ var Testtext = "The term \"design of experiments\" derives from early statistica
 var start_time = Date.now();
 var time = 0;
 var err = 0;
-var text_box_id = 'input-field';
+var max_length = 0;
+var text_box = $('#input-field');
 var started = false;
 
-function check_error(id) {
-//    returns true if the text in the specified id doesn't match the original text.
-    var current_text = document.getElementById(id).value;
+function reset(element) {
+    // reset the test to original condition
+    started = false;
+    time = 0;
+    err = 0;
+    element.value = '';
+}
+
+function avg_WPM(element) {
+    var words = element.value.split(' ').length;
+    var current_time = Date.now() - start_time;
+    return words / current_time * 60000;
+}
+
+function check_error(element) {
+    // returns true if the current keypress resulted in an mismatch.
+    var current_text = element.value;
     return Testtext.indexOf(current_text) === -1;
 }
 
-function check_completion(id) {
-    var current_text = document.getElementById(id).value;
+function check_completion(element) {
+    var current_text = element.value;
     return current_text == Testtext;
 }
 
@@ -33,11 +48,26 @@ function submitFrm() {
     $('#test_result').submit();
 }
 
-function keypress_update(id) {
-    if (check_error(id)) err += 1;
-    if (check_completion(id)) {
-        time = Date.now() - start_time;
-        return true;
+function keypress_update(element) {
+    // function to bind to textbox input changes
+    // returns true only when type test is completed
+    if(!started && element.value.length > 0) {
+        start_time = Date.now();
+        started = true;
+    }
+    else reset(element);
+
+    if(started){
+        if (check_error(element)) err += 1;
+        if (element.value.length > max_length){
+            // only check for error if the text grew
+            check_error(element);
+            max_length = element.value.length;
+        }
+        if (check_completion(element)) {
+            time = Date.now() - start_time;
+            return true;
+        }
     }
     return false;
 }
@@ -45,12 +75,7 @@ $(document).ready(function () {
 
     $('#Test').text(Testtext)
 
-    $('#' + text_box_id).bind('input propertychange', function(e) {
-
-        if(!started) {
-            start_time = Date.now();
-            started = true;
-        }
+    text_box.bind('input propertychange', function(e) {
 
         if (keypress_update(text_box_id)) {
             alert('complete');
