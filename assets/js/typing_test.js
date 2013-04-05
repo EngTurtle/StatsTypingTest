@@ -7,7 +7,7 @@
  */
 
 
-var Testtext = "The term \"design of experiments\" derives from early statistical work performed by Sir Ronald Fisher. He was described as \"a genius who almost single-handedly created the foundations for modern statistical science.\" Fisher initiated the principles of design of experiments and elaborated on his studies of \"analysis of variance\". Perhaps even more important, Fisher began his systematic approach to the analysis of real data as the springboard for the development of new statistical methods. He began to pay particular attention to the labour involved in the necessary computations performed by hand, and developed methods that were as practical as they were founded in rigour. In 1925, this work culminated in the publication of his first book, Statistical Methods for Research Workers.";
+var Testtext = "'O Captain, my Captain.' Who knows where that comes from? Anybody? Not a clue? It's from a poem by Walt Whitman about Mr. Abraham Lincoln. Now in this class, you can either call me Mr. Keating, or if you're slightly more daring, O Captain, my Captain. Now let me dispel a few rumors so they don't fester into facts. Yes, I too attended Hell-ton and survived. And no, at that time I was not the mental giant you see before you. I was the intellectual equivalent of a ninety-eight pound weakling. I would go to the beach and people would kick copies of Byron in my face.";
 
 var start_time = Date.now();
 var time = 0;
