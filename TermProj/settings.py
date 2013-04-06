@@ -125,8 +125,6 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'TypingSpeed',
 
-    'rest_framework',
-
     'gunicorn',
 )
 
