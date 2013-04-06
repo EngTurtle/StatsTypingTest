@@ -5,3 +5,14 @@
 .textarea-error {
     background: #f2b5af;
 }
+
+@media (max-width: 767px){
+    #input-field {
+        max-height: 30%;
+        overflow:scroll;
+    }
+    .Test {
+        max-height: 40%;
+        overflow:scroll;
+    }
+}
