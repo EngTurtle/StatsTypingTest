@@ -11,7 +11,7 @@
         max-height: 4em;
     }
     #Test {
-        max-height: 40%;
-        overflow:scroll;
+        max-height: 12em;
+        overflow-y: scroll;
     }
 }
