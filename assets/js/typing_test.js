@@ -14,6 +14,7 @@ var time = 0;
 var err = 0;
 var max_length = 0;
 var text_box = $('#input-field');
+var info_text = $('#info-text');
 var started = false;
 
 function reset(element) {
@@ -21,23 +22,28 @@ function reset(element) {
     started = false;
     time = 0;
     err = 0;
-    element.value = '';
+    element.val('');
+}
+
+function display_error(element) {
+    if(check_error(element)) element.css('background', '#f2b5af');
+    else element.css('background', 'white');
 }
 
 function avg_WPM(element) {
-    var words = element.value.split(' ').length;
+    var words = element.val().split(' ').length;
     var current_time = Date.now() - start_time;
     return words / current_time * 60000;
 }
 
 function check_error(element) {
     // returns true if the current keypress resulted in an mismatch.
-    var current_text = element.value;
+    var current_text = element.val();
     return Testtext.indexOf(current_text) === -1;
 }
 
 function check_completion(element) {
-    var current_text = element.value;
+    var current_text = element.val();
     return current_text == Testtext;
 }
 
@@ -45,24 +51,26 @@ function submitFrm() {
     $('#id_total_time').val(time);
     $('#id_errors').val(err);
     $('#id_device_string').val(navigator.userAgent);
-    $('#test_result').submit();
+    //$('#test_result').submit();
 }
 
 function keypress_update(element) {
     // function to bind to textbox input changes
     // returns true only when type test is completed
-    if(!started && element.value.length > 0) {
+    if(!started) {
         start_time = Date.now();
         started = true;
     }
-    else reset(element);
+    else if (element.val().length == 0) reset(element);
 
     if(started){
         if (check_error(element)) err += 1;
-        if (element.value.length > max_length){
+        display_error(element);
+
+        if (element.val().length > max_length){
             // only check for error if the text grew
             check_error(element);
-            max_length = element.value.length;
+            max_length = element.val().length;
         }
         if (check_completion(element)) {
             time = Date.now() - start_time;
@@ -73,12 +81,20 @@ function keypress_update(element) {
 }
 $(document).ready(function () {
 
-    $('#Test').text(Testtext)
+    $('#Test').text(Testtext);
 
     text_box.bind('input propertychange', function(e) {
 
-        if (keypress_update(text_box_id)) {
+        if (keypress_update(text_box)) {
             alert('complete');
+            submitFrm();
         }
+
+        if (started) {
+            info_text.text(
+                'Words Per Minute: ' + avg_WPM(text_box).toString().slice(0,4) + ' Errors: ' + err.toString()
+            );
+        }
+        else info_text.text('');
     });
 });

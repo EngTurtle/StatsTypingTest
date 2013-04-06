@@ -16,10 +16,33 @@
         <textarea rows="10" autofocus="true" id="input-field"></textarea>
     </div>
 </div>
-<div class="hidden">
-    <form action="\" id="test_result">
+<div class="">
+    <form action="\" method="post" id="test_result">
+        {% csrf_token %}
         {{ form.as_ul }}
+        <input type="submit" value="Submit">
     </form>
+</div>
+
+<div class="modal">
+    <div class="modal-header">
+        <h3>Survey</h3>
+    </div>
+    <div class="modal-body">
+        <label for="model-email">Email</label>
+        <input type="email" id='model-email'>
+        <label for="model-age">Age</label>
+        <input type="number" min='1' max="150" id='model-age'>
+        <label for="model-gender">Gender</label>
+        <select id="model-gender">
+            <option value="not disclose">Not Disclose</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+    </div>
+    <div class="modal-footer">
+        <button id="model-ok" class="btn btn-primary">Ok</button>
+    </div>
 </div>
 <script type="text/javascript" src="{{ STATIC_URL }}js/typing_test.js"></script>
 {% endblock %}
