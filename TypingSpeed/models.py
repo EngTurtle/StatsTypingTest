@@ -15,6 +15,6 @@ class TestResult(models.Model):
         return '/'
 
     def __unicode__(self):
-        return u'Test by' + self.email
+        return u'Test by ' + self.email
 
 admin.site.register(TestResult)
