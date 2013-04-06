@@ -62,7 +62,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = 'C:/Users/Oliver/Dropbox/University Documents/STA286/TermProj/statics/'
+STATIC_ROOT = os.path.join(os.path.dirname(__file__), 'static').replace('\\', '/')
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -73,8 +73,8 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    'C:/Users/Oliver/Documents/University Documents/STA286/TermProj/bootstrap/',
-    'C:/Users/Oliver/Documents/University Documents/STA286/TermProj/assets/'
+    os.path.join(os.path.dirname(__file__), 'bootstrap').replace('\\', '/'),
+    os.path.join(os.path.dirname(__file__), 'assets').replace('\\', '/'),
 )
 
 # List of finder classes that know how to find static files in
