@@ -7,7 +7,7 @@
  */
 
 function check_email(str) {
-    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    var emailReg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!emailReg.test(str) || str == '') {
         alert('please input a valid email address');
         return false;
@@ -30,9 +30,10 @@ function move_model_data() {
 }
 
 function collect(){
-    if(check_email($('#model-email').val() && check_age($('#model-age').val()))){
+    if(check_email($('#model-email').val()) && check_age($('#model-age').val())){
         move_model_data();
-        $('.modal').addCssClass('hide fade');
+        $('#survey').addClass('hide fade');
+        $('#input-field').removeClass('uneditable-input');
     }
 }
 
