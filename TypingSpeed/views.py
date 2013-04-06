@@ -7,3 +7,4 @@ class ContactView(CreateView):
     template_name = 'type_test.html'
     model = TestResult
 
+

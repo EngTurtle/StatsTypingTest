@@ -21,11 +21,18 @@
     <![endif]-->
     <script src="{{ STATIC_URL }}js/jquery.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/validate.min.js"></script>
 </head>
 
 <body>
-
-<div class="container">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <span class="navbar-text"  id="info-text"></span>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-top: 3em;">
     {% block content %}
     {% endblock %}
 </div> <!-- /container -->

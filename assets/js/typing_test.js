@@ -51,7 +51,7 @@ function submitFrm() {
     $('#id_total_time').val(time);
     $('#id_errors').val(err);
     $('#id_device_string').val(navigator.userAgent);
-    //$('#test_result').submit();
+    $('#test_result').submit();
 }
 
 function keypress_update(element) {
