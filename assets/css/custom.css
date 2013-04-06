@@ -8,10 +8,9 @@
 
 @media (max-width: 767px){
     #input-field {
-        max-height: 30%;
-        overflow:scroll;
+        max-height: 4em;
     }
-    .Test {
+    #Test {
         max-height: 40%;
         overflow:scroll;
     }
