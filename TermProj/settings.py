@@ -126,6 +126,8 @@ INSTALLED_APPS = (
     'TypingSpeed',
 
     'rest_framework',
+
+    'gunicorn',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -156,3 +158,10 @@ LOGGING = {
         },
     }
 }
+
+#heroku settings
+
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
