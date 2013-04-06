@@ -110,7 +110,7 @@ ROOT_URLCONF = 'TermProj.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'TermProj.wsgi.application'
 
-TEMPLATE_DIRS = ('C:/Users/Oliver/Documents/University Documents/STA286/TermProj/templates',)
+TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
