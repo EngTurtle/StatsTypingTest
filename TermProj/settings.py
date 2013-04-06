@@ -68,7 +68,7 @@ STATIC_ROOT = os.path.join(os.path.dirname(__file__), 'static').replace('\\', '/
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = 'http://individual.utoronto.ca/oliver_liang/TermProj/'
 if DEBUG:
-    STATIC_URL = '/statics/'
+    STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
