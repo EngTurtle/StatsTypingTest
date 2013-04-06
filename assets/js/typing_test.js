@@ -86,7 +86,7 @@ $(document).ready(function () {
     text_box.bind('input propertychange', function(e) {
 
         if (keypress_update(text_box)) {
-            alert('complete');
+            alert('Thank you for participating.\nI would give you cookies, but Brendon ate it all.');
             submitFrm();
         }
 
