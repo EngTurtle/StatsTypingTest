@@ -67,6 +67,8 @@ STATIC_ROOT = os.path.join(os.path.dirname(__file__), 'static').replace('\\', '/
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = 'http://individual.utoronto.ca/oliver_liang/TermProj/'
+if DEBUG:
+    STATIC_URL = '/statics/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -160,6 +162,7 @@ LOGGING = {
 #heroku settings
 
 import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+if os.getenv('DATABASE_URL'):
+    DATABASES[ 'default' ] = dj_database_url.config()
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
